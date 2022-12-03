@@ -7,36 +7,31 @@ name: Workflow for HW
     branches:
       - master
 jobs:
-  run-linters:
-    name: Run linters
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: Install Node.js dependencies
-        run: npm ci
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-  docker:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: 'idiordev'
-          password: 'tUL5Qb$!/rwjx:M'
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: 'user/app:latest'
+  runs-on: ubuntu-latest
+  steps:
+    - name: Check out Git repository
+      uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - name: Install Node.js dependencies
+      run: npm ci
+    - name: Run linters
+      uses: wearerequired/lint-action@v2
+      with:
+        eslint: true
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: idiordev
+        password: 'tUL5Qb$!/rwjx:M'
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: 'user/app:latest'
