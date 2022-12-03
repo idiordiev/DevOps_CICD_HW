@@ -30,7 +30,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: idiordev
-          password: 'tUL5Qb$!/rwjx:M'
+          password: dckr_pat_kC2Kg18v88rO2_BiOBLPG6pe6hI
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
