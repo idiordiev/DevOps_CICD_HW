@@ -2,10 +2,10 @@ name: Workflow for HW
 'on':
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 jobs:
   run-linters:
     name: Run linters
